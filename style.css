@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(222, 217, 217, 0.556);
+  line-height: 1.75;
+  font-weight: 400;
+  color: #0f172a;
+}
+
+.section-center {
+  width: 90vw;
+  text-align: center;
+  margin: 10rem auto;
+  box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.723);
+  padding: 1.4rem;
+  max-width: 600px;
+}
+.form-input {
+  padding: 0.25rem 1rem;
+  width: 400px;
+  max-width: 450px;
+}
+.btn {
+  cursor: pointer;
+  color: white;
+  background: #645cff;
+  border: transparent;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  display: inline-block;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.btn:hover {
+  background: #656dff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.alert-msg {
+  padding: 0.4rem 0.8rem;
+  /* color: red; */
+  margin-bottom: 1rem;
+  border-color: transparent;
+  border-radius: 5px;
+  text-transform: capitalize;
+  text-align: center;
+}
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+.alert-success {
+  color: #155724;
+  background: #d4edda;
+}
+.todo-app h4 {
+  margin: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #000000b5;
+}
