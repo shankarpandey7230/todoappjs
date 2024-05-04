@@ -21,6 +21,8 @@ let editID = '';
 toDo.addEventListener('submit', addItem);
 clear.addEventListener('click', clearItem);
 
+// const deleteButton = document.querySelector('.delete');
+
 function addItem(e) {
   e.preventDefault();
   const inputValue = grocery.value;
@@ -46,6 +48,13 @@ function addItem(e) {
         <i class="fa-solid fa-trash"></i>
       </button>
     </div>`;
+
+    const deleteButton = tobeAddedElement.querySelector('.delete');
+    const editButton = tobeAddedElement.querySelector('.edit');
+
+    deleteButton.addEventListener('click', deleteItem);
+    editButton.addEventListener('click', editItem);
+
     // adding to the list by appending child
 
     list.appendChild(tobeAddedElement);
@@ -78,6 +87,27 @@ function clearItem() {
   setBackToDefault();
 }
 
+// delete function
+function deleteItem(e) {
+  //   console.log('deleted');
+  const element = e.currentTarget.parentElement.parentElement;
+  const id = element.dataset.id;
+  list.removeChild(element);
+  if (list.children.length === 0) {
+    listContainer.classList.remove('show-container');
+  }
+  alertDisplay('Items removed', 'danger');
+  setBackToDefault();
+
+  // removing from local storage
+
+  //   removeFromLocalStorage(id);
+}
+
+// edit function
+function editItem() {
+  console.log('edit Item');
+}
 // Alert display function
 function alertDisplay(text, action) {
   alertMessage.textContent = text;
@@ -102,5 +132,6 @@ function setBackToDefault() {
 
 //localStorage
 function addToLocalStorage(id, value) {
-  console.log('added to addToLocalStorage');
+  //   console.log('added to addToLocalStorage');
 }
+function removeFromLocalStorage(id) {}
