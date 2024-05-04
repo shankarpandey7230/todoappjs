@@ -18,12 +18,19 @@ body {
   box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.723);
   padding: 1.4rem;
   max-width: 600px;
+  background: white;
+  border-radius: 10px;
 }
 .form-input {
-  padding: 0.25rem 1rem;
-  width: 400px;
-  max-width: 450px;
+  padding: 0.25rem 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+  border-color: transparent;
+  border: 1px solid #dedee4;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
+
 .btn {
   cursor: pointer;
   color: white;
@@ -32,10 +39,18 @@ body {
   border-radius: 5px;
   letter-spacing: 1px;
   text-transform: capitalize;
-  display: inline-block;
+  /* display: inline-block; */
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
-
+.btn-submit {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  width: 100px;
+}
+.row {
+  display: flex;
+  margin-bottom: 1rem;
+}
 .btn:hover {
   background: #656dff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -50,6 +65,7 @@ body {
   border-radius: 5px;
   text-transform: capitalize;
   text-align: center;
+  letter-spacing: 2px;
 }
 .alert-danger {
   color: #721c24;
@@ -64,4 +80,55 @@ body {
   text-align: center;
   font-size: 1.2rem;
   color: #000000b5;
+}
+
+/* list to display */
+.list-container {
+  margin-top: 2rem;
+}
+
+.list-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  padding: 1rem 1.2rem;
+  transition: all 0.3 ease-in-out;
+  color: rgba(47, 44, 41, 0.82);
+}
+
+.list-items:hover {
+  color: rgb(104, 5, 5);
+  background: rgb(118, 114, 114);
+}
+.edit,
+.delete {
+  background: transparent;
+  border: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.delete {
+  color: rgba(200, 85, 85, 0.784);
+}
+.edit {
+  color: rgba(58, 159, 58, 0.796);
+}
+.clear-items {
+  margin-top: 2rem;
+  display: inline;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  color: blue;
+  text-transform: uppercase;
+  border: transparent;
+  border-radius: 5px;
+  letter-spacing: 1px;
+}
+.clear-items:hover {
+  background: blue;
+  color: white;
 }
