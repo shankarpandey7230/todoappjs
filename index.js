@@ -19,6 +19,7 @@ let editID = '';
 // Event Listeners
 // first for form submit which is toDo in our case:
 toDo.addEventListener('submit', addItem);
+clear.addEventListener('click', clearItem);
 
 function addItem(e) {
   e.preventDefault();
@@ -62,6 +63,19 @@ function addItem(e) {
     // console.log('empty value');
     alertDisplay('Please enter some  value', 'danger');
   }
+}
+
+function clearItem() {
+  const items = document.querySelectorAll('.list-items');
+
+  if (items.length > 0) {
+    items.forEach((item) => {
+      list.removeChild(item);
+    });
+  }
+  listContainer.classList.remove('show-container');
+  alertDisplay('empty list', 'danger');
+  setBackToDefault();
 }
 
 // Alert display function
