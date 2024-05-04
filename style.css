@@ -86,8 +86,11 @@ body {
 /* list to display */
 .list-container {
   margin-top: 2rem;
+  visibility: hidden;
 }
-
+.show-container {
+  visibility: visible;
+}
 .list-items {
   display: flex;
   justify-content: space-between;
