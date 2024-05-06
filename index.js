@@ -1,15 +1,15 @@
 // selection of the elements required for the actions
 
 const alertMessage = document.querySelector('.alert-msg');
-const input = document.getElementById('grocery');
 const toDo = document.querySelector('.todo-app');
+const input = document.getElementById('grocery');
 const submit = document.querySelector('.btn-submit');
 const listContainer = document.querySelector('.list-container');
 const list = document.querySelector('.list');
 const clear = document.querySelector('.clear-items');
 
 //  edit option
-let edit;
+let editElement;
 let editFlag = false;
 let editID = '';
 // console.log(alertMessage, input, toDo, submit, listContainer, list, clear);
@@ -34,8 +34,8 @@ function addItem(e) {
 
     const tobeAddedElement = document.createElement('article');
     tobeAddedElement.classList.add('list-items'); // adding the class to the article
-    // adding id
 
+    // adding id
     const attr = document.createAttribute('data-id');
     attr.value = id;
     tobeAddedElement.setAttributeNode(attr);
@@ -49,12 +49,6 @@ function addItem(e) {
       </button>
     </div>`;
 
-    const deleteButton = tobeAddedElement.querySelector('.delete');
-    const editButton = tobeAddedElement.querySelector('.edit');
-
-    deleteButton.addEventListener('click', deleteItem);
-    editButton.addEventListener('click', editItem);
-
     // adding to the list by appending child
 
     list.appendChild(tobeAddedElement);
@@ -63,11 +57,22 @@ function addItem(e) {
 
     //showing container of list
 
+    const deleteButton = tobeAddedElement.querySelector('.delete');
+    const editButton = tobeAddedElement.querySelector('.edit');
+
+    deleteButton.addEventListener('click', deleteItem);
+    editButton.addEventListener('click', editItem);
     //addToLocalStorage
-    addToLocalStorage(id, 'value');
+    addToLocalStorage(id, inputValue);
     setBackToDefault();
   } else if (inputValue && editFlag) {
-    console.log('edit');
+    editElement.innerHTML = inputValue;
+    alertDisplay('value Changed', 'success');
+
+    // console.log('edit');
+    editLocalStorage(editID, inputValue);
+
+    setBackToDefault();
   } else {
     // console.log('empty value');
     alertDisplay('Please enter some  value', 'danger');
@@ -91,6 +96,7 @@ function clearItem() {
 function deleteItem(e) {
   //   console.log('deleted');
   const element = e.currentTarget.parentElement.parentElement;
+  console.log(e.currentTarget);
   const id = element.dataset.id;
   list.removeChild(element);
   if (list.children.length === 0) {
@@ -105,8 +111,22 @@ function deleteItem(e) {
 }
 
 // edit function
-function editItem() {
-  console.log('edit Item');
+function editItem(e) {
+  // console.log('edit Item');
+  const element = e.currentTarget.parentElement.parentElement;
+
+  // console.log(e.currentTarget);
+  console.log(element);
+  // editElement = e.currentTarget.parentElement.previousSiblingElement;//The difference between this property and previousSibling, is that previousSibling returns the previous sibling node as an element node, a text node or a comment node, while previousElementSibling returns the previous sibling node as an element node (ignores text and comment nodes).
+
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  input.value = editElement.innerHTML;
+
+  editFlag = 'true';
+  editID = element.dataset.id;
+  submit.textContent = 'edit';
+
+  console.log(editElement);
 }
 // Alert display function
 function alertDisplay(text, action) {
